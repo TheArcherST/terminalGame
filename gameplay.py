@@ -33,7 +33,7 @@ class Gameplay:
                 player.move(0, -1)
             elif str(key) == "'\\x12'":
                 printer.clear_all()
-                self.render_engine.refresh_request()
+                self.render_engine.update_notify()
             elif key == keyboard.Key.esc:
                 self.render_engine.is_alive = False
                 exit(0)
@@ -55,9 +55,9 @@ class Gameplay:
 
         return res
 
-    @staticmethod
-    def post_init():
+    def post_init(self):
         printer.clear_all()
+        self.render_engine.update_notify(force=True)
 
     def run(self) -> None:
         """

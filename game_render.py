@@ -94,13 +94,12 @@ class GameRenderEngine:
 
             self.upd_unresolved_updates()
 
-            if (datetime.now() - self.last_fps_edit).total_seconds() > 1:
-                self.last_fps_edit = datetime.now()
+            self.last_fps_edit = datetime.now()
 
-                if self.unresolved_updates == 0:
-                    self.fps -= 1
-                else:
-                    self.fps += 1
+            if self.unresolved_updates == 0:
+                self.fps -= 1
+            else:
+                self.fps += 1
 
             if self.fps > self.max_fps:
                 self.fps = self.max_fps
@@ -115,6 +114,3 @@ class GameRenderEngine:
                 self.process_render()
         else:
             printer.clear_all()
-
-    def refresh_request(self):
-        self.unresolved_updates += 1
