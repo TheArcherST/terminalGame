@@ -32,7 +32,7 @@ class TerminalFrame:
             else:
                 literal = '\b'
 
-            print(literal, end='')
+            print('', end=literal)
 
 
 printer = TerminalFrame()
