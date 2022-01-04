@@ -35,7 +35,7 @@ def main():
     construct_map = ConstructMap(10, 30, render_engine)
     player = MapObject(construct_map, (1, 1), 100, True)
 
-    brick = MapObject(construct_map, texture=int(render_core.convert('@')))
+    brick = MapObject(construct_map, texture=render_core.convert('@'))
     brick_mask = Mask.parse(MAP)
 
     construct_map.add_by_mask(brick, brick_mask)

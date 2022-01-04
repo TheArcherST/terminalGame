@@ -22,14 +22,14 @@ class RenderCore:
         return result
 
     @overload
-    def convert(self, value: str, max_: int = 255) -> float:
+    def convert(self, value: str, max_: int = 255) -> int:
         pass
 
     @overload
     def convert(self, value: Union[int, float], max_: int = 255) -> str:
         pass
 
-    def convert(self, value: Union[int, str, float], max_: int = 255) -> Union[float, str]:
+    def convert(self, value: Union[int, str, float], max_: int = 255) -> Union[int, str]:
         if isinstance(value, (int, float)):
             normalized = value / max_
             index_float = normalized * (self.GRADIENT.__len__() - 1)
@@ -41,7 +41,7 @@ class RenderCore:
             index = self.GRADIENT.index(value)
             normalized = (index + 1) / len(self.GRADIENT)
 
-            result = normalized * max_
+            result = int(normalized * max_)
 
         else:
             raise TypeError(f"Can't convert type `{type(value)}`")
